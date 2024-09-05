@@ -1,0 +1,43 @@
+
+I'm looking to achieve IaC with gitops, I think it'll be much easier with k8s
+
+Honestly it's so worth it. Maintaining a homelab stack with flux and kubernetes in a gitops pattern is so clean and easy. I think alot of the why change from docker folks have never seen flux and k8s in action. Also, you don't need to be some kubernetes expert. Just some basic commands and ur good. Flux will be applying ur manifests. You'll probably only ever bounce the occasional pod. I mean it's a homelab k8s cluster not some enterprise one; it will be very stable. Worse comes to worse and you hose ur cluster just build a new one and flux bootstrap it and ur back. Now I'm assuming all the data you care about is ending up on a nas in this statement like mine does. If you have some persistent workloads you care about will want to snapshot that to ur nas in case of disaster.
+
+
+Just throwing Proxmox on a machine and trying to bootstrap what others need isn't a great idea, especially if other teams will have access to VMs, databases, etc. And it won't be very scalable to manage all the requests you get. To my knowledge, Proxmox doesn't support Docker natively - it uses LXC for containers. You could run Docker containers inside a VM but that's pretty kludgy.
+
+You may want to look at an OpenStack setup on a few servers. This way you can give them "self-service" access to create their own resources, and basically run it as an internal cloud service. Check this link out for some of the services supported by OpenStack. You'd probably most be interested in:
+
+Nova for Compute (VMs)
+
+Zun for Containers (Docker)
+
+Magnum for Container Orchestration (Kubernetes)
+
+Cinder for block storage
+
+Keystone for identity
+
+Trove for databases
+
+Horizon for the frontend web interface
+
+ 
+
+I'd really try to define what the scope of this project is, and it its worth doing with local hardware, or if cloud computing would make more sense. This isn't something you'd want to just throw on a desktop box and run for other departments.
+
+ 
+
+Edit: OK I saw you posted this question in a few other subreddits, and I do think that OpenStack would be a good fit for your needs. It sounds like the University wants local servers, not cloud, so it checks that box.
+
+You'll definitely want a decent amount of resources to make this work, so I'd ask what the budget is and what kind of hardware you can get for this project, then plan it out.
+
+Some resources that may get you started:
+
+OpenStack - The BEST Way to Build Your Own Private Cloud
+
+Homelab Show - OpenStack
+
+Check out Udemy for some courses
+
+There are some resources on FreeCodeCamp.org but I don't know how good it is.
