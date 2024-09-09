@@ -21,6 +21,8 @@ except db.DatabaseError as err:
 else:
   try:
     cursor = connection.cursor()
+    # Use bind variables ? or strictly filter parameters
+    # Otherwise allows for SQLi & SHi attacks
     query = f'''
     select s.status,p.file_uri from product_file p, product_file_site_map s where p.product_file_intid=s.product_file_intid and s.site_name like "%{self.kafka_topic}%"
     '''
