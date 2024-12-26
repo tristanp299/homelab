@@ -1,0 +1,4 @@
+{
+    "network_interface": "eth0",
+    "analysis_interval": 60
+}
