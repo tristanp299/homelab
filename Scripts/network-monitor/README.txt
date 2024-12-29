@@ -1,1 +1,1 @@
-pip install scapy pandas scikit-learn
+pip install scapy flask pandas numpy matplotlib scikit-learn

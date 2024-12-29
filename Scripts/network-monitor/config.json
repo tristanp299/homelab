@@ -1,4 +1,10 @@
 {
     "network_interface": "eth0",
-    "analysis_interval": 60
+    "analysis_interval": 60,
+    "bruteforce_window": 60,
+    "bruteforce_threshold": 10,
+    "malware_signatures": [
+        "malicious_payload",
+        "evil_command"
+    ]
 }
