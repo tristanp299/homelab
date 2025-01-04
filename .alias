@@ -1,5 +1,6 @@
 # Common #
 export cwd=/home/tristan/homelab
+export HOMELAB="$HOME/homelab"
 alias ll='ls -lart'
 alias gedit='(){gedit "$@" &}'
 alias setcwd='(){sed -i "0,/export cwd=/s|export cwd=.*|export cwd=`pwd`|" "$HOMELAB/.alias"} &&'
@@ -10,12 +11,12 @@ alias s='(){grep -i "$1" "$HOMELAB"/.alias --color}'
 alias o='gedit "$HOMELAB"/.alias &'
 
 # Security #
-alias encrypt='(){gpg -c --no-symkey-cache --cipher-algo AES256 "$1" && rm "$1"}'
+alias encrypt='(){sudo gpg -c --no-symkey-cache --cipher-algo AES256 "$1" && rm "$1"}'
 alias chperm='(){sudo chown root:$USER "$1" && sudo chmod 640 "$1"}'
 
 # Network #
 alias qn='(){nmap -vv --min-rate=500 -T3 -sT -Pn "$1"}'
-
+alias tailscaleup='sudo tailscale set --exit-node= --exit-node-allow-lan-access=true'
 # System #
 alias accessUEFI='sudo systemctl reboot --firmware-setup'
 #alias flash live usb --> sudo dd if="./debian-12.8.0-amd64-DVD-1.iso" of="/dev/sda" status="progress" conv="fsync"
