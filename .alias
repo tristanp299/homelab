@@ -1,6 +1,7 @@
 # Common #
 export cwd=/home/tristan/homelab
 export HOMELAB="$HOME/homelab"
+source "$HOME"/.env
 alias ll='ls -lart'
 alias gedit='(){gedit "$@" &}'
 alias setcwd='(){sed -i "0,/export cwd=/s|export cwd=.*|export cwd=`pwd`|" "$HOMELAB/.alias"} &&'
@@ -20,3 +21,5 @@ alias tailscaleup='sudo tailscale set --exit-node= --exit-node-allow-lan-access=
 # System #
 alias accessUEFI='sudo systemctl reboot --firmware-setup'
 #alias flash live usb --> sudo dd if="./debian-12.8.0-amd64-DVD-1.iso" of="/dev/sda" status="progress" conv="fsync"
+alias changeDE='sudo tasksel'
+alias refreshSSH='eval $(ssh-agent) && ssh-add "$GITHUB_KEY"'

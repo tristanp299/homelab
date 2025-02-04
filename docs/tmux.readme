@@ -1,0 +1,153 @@
+========================================
+            Tmux Cheatsheet
+========================================
+
+--- Starting & Managing Sessions ---
+
+- Start a new session:
+  tmux
+  or with a custom name:
+  tmux new -s mysession
+
+- List sessions:
+  tmux ls
+
+- Attach to a session:
+  tmux attach -t mysession
+
+- Kill a session:
+  tmux kill-session -t mysession
+
+----------------------------------------
+
+--- Prefix Key ---
+
+- Default Prefix: Ctrl+b
+  (This key combination must be pressed before most tmux commands.)
+
+- Change Prefix (in ~/.tmux.conf):
+  set -g prefix C-a
+  unbind C-b
+  bind C-a send-prefix
+
+----------------------------------------
+
+--- Session Management Commands ---
+
+- Detach from a session:
+  (Press Prefix: Ctrl+b then d)
+
+----------------------------------------
+
+--- Window Management ---
+
+- Create a new window:
+  (Press Prefix: Ctrl+b then c)
+
+- List windows:
+  (Press Prefix: Ctrl+b then w)
+
+- Rename current window:
+  (Press Prefix: Ctrl+b then ,)
+
+- Switch to next window:
+  (Press Prefix: Ctrl+b then n)
+
+- Switch to previous window:
+  (Press Prefix: Ctrl+b then p)
+
+- Select window by number:
+  (Press Prefix: Ctrl+b then <number>)
+
+- Kill current window:
+  (Press Prefix: Ctrl+b then &)
+
+----------------------------------------
+
+--- Pane Management ---
+
+- Split window vertically (side-by-side):
+  (Press Prefix: Ctrl+b then %)
+
+- Split window horizontally (top/bottom):
+  (Press Prefix: Ctrl+b then ")
+
+- Switch between panes:
+  (Press Prefix: Ctrl+b then arrow keys or o to cycle through)
+
+- Resize pane:
+  Enter command mode with (Press Prefix: Ctrl+b then :)
+  and type one of the following:
+    resize-pane -L 10   # Resize 10 cells to the left
+    resize-pane -R 10   # Resize 10 cells to the right
+    resize-pane -U 10   # Resize 10 cells upward
+    resize-pane -D 10   # Resize 10 cells downward
+  (You can also bind these commands to keys in your ~/.tmux.conf.)
+
+- Swap panes:
+  (Press Prefix: Ctrl+b then { or })
+
+- Kill current pane:
+  (Press Prefix: Ctrl+b then x)
+
+- Zoom (toggle fullscreen) current pane:
+  (Press Prefix: Ctrl+b then z)
+
+----------------------------------------
+
+--- Copy Mode (Scrollback) ---
+
+- Enter copy mode:
+  (Press Prefix: Ctrl+b then [)
+
+- Navigate in copy mode:
+  Use arrow keys or Page Up/Page Down.
+  If using vi-like bindings, you can also use h, j, k, l.
+
+- Exit copy mode:
+  Press q or Esc
+
+- Copy text (using vi bindings):
+  1. Press Space to start selection.
+  2. Move the cursor to select text.
+  3. Press Enter to copy the selection.
+
+----------------------------------------
+
+--- Command Prompt ---
+
+- Access tmux command prompt:
+  (Press Prefix: Ctrl+b then :)
+
+- Reload tmux configuration:
+  In the command prompt, type:
+    source-file ~/.tmux.conf
+
+- List all key bindings:
+  (Press Prefix: Ctrl+b then ?)
+
+----------------------------------------
+
+--- Mouse Mode ---
+
+- Enable mouse support (add to ~/.tmux.conf):
+  set -g mouse on
+  (This allows clicking to select panes, resize, and switch windows.)
+
+----------------------------------------
+
+--- Custom Key Bindings Example ---
+
+To add quick pane resizing shortcuts, add the following lines to your ~/.tmux.conf:
+
+  bind -r H resize-pane -L 5
+  bind -r J resize-pane -D 5
+  bind -r K resize-pane -U 5
+  bind -r L resize-pane -R 5
+
+This lets you use "Prefix + H/J/K/L" to resize the active pane by 5 cells in the corresponding direction.
+
+========================================
+Happy Multiplexing with tmux!
+========================================
+
